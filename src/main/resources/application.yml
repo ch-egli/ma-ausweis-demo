@@ -1,0 +1,20 @@
+spring:
+  web:
+    resources:
+      static-locations: classpath:/static
+
+aadvc_ApiEndpoint: https://verifiedid.did.msidentity.com/v1.0/
+aadvc_Authority: https://login.microsoftonline.com/{0}
+aadvc_scope: 3db474b9-6a0c-4840-96ac-1fceb342124f/.default
+aadvc_TenantId: ${TENANT_ID}
+aadvc_ClientId: ${CLIENT_ID}
+aadvc_ClientSecret: ${CLIENT_SECRET}
+
+aadvc_ApiKey: ${TENANT_ID:dummyApiKey}
+aadvc_CacheExpiresInSeconds: 300
+aadvc_PresentationFile: ${PRESENTATION_FILE:dummyPresentationFile}
+aadvc_IssuanceFile: ${ISSUENCE_FILE:dummyIssuenceFile}
+aadvc_IssuerAuthority: ${ISSUER_AUTHORITY:dummyIssuerAuthority}
+aadvc_VerifierAuthority: ${VERIFIER_AUTHORITY:dummyVerifierAuthority}
+aadvc_CredentialManifest: ${CREDENTIAL_MANIFEST:dummyCredentialManifest}
+
