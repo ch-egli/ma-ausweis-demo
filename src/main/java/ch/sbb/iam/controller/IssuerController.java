@@ -74,10 +74,10 @@ public class IssuerController {
           },
           "authority": "",
           "registration": {
-            "clientName": "Java sample Issuer",
-            "purpose": "Please accept the card to prove you are an expert"
+            "clientName": "Snoopfish Community Member Issuer",
+            "purpose": "Please accept the card to prove you are a Snoopfish community member"
         },
-          "type": "VerifiedCredentialExpert",
+          "type": "SnoopfishCommunityMember",
           "manifest": "",
           "pin": {
             "value": "PIN_IS_SET_IN_CODE",

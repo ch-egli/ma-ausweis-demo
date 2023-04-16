@@ -6,10 +6,10 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @EnableCaching
-public class JavaAadVcApiIdTokenHintApplication {
+public class MAAusweisDemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JavaAadVcApiIdTokenHintApplication.class, args);
+		SpringApplication.run(MAAusweisDemoApplication.class, args);
 	}
 
 }

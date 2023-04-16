@@ -84,14 +84,14 @@ public class VerifierController {
           },
           "authority": "did:ion: THIS IS YOUR DID FROM THE VC PAGE IN AZURE PORTAL WHICH IS SET IN THE run.cmd/sh OR docker-run.cmd/sh files",
           "registration": {
-            "clientName": "Java sample Verifier",
-            "purpose": "So we can see that you a verifiable credentials expert"
+            "clientName": "Community Verifier",
+            "purpose": "So we can see that you are a Snoopfish community member"
         },
           "includeReceipt": false,
           "requestedCredentials": [
             {
-              "type": "VerifiedCredentialExpert",
-              "acceptedIssuers": [ "did:ion: copied from your VC portal in this sample the code copies it from APPSETTINGS.JSON" ]
+              "type": "SnoopfishCommunityMember",
+              "acceptedIssuers": [ "Snoopfish Community Member VC" ]
             }
           ],
           "configuration": {
@@ -236,6 +236,7 @@ public class VerifierController {
             // this means only that issuer should be trusted for the requested credentialtype
             // this value is an array in the payload, you can trust multiple issuers for the same credentialtype
             // very common to accept the test VCs and the Production VCs coming from different verifiable credential services
+            // TODO ChE: fix -> does not work...
             ((ArrayNode)(rootNode.path("requestedCredentials").get(0).path("acceptedIssuers"))).set( 0, new TextNode( issuerAuthority ) );
             String payload = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(rootNode);
             responseBody = callVCClientAPI( payload );
