@@ -1,5 +1,6 @@
 package ch.sbb.iam.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.logging.*;
 import java.util.concurrent.*;
@@ -17,9 +18,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.*;
-//import com.fasterxml.jackson.databind.node.ArrayNode;
-import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.http.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -105,7 +104,7 @@ public class VerifierController {
     // *********************************************************************************
     // helpers
     // *********************************************************************************
-    public static String getBasePath(HttpServletRequest request) {        
+    public static String getBasePath(HttpServletRequest request) {
         String basePath = "https://" + request.getServerName() + "/";
         return basePath;
     }
@@ -302,8 +301,8 @@ public class VerifierController {
                 data.put("lastName", presentationResponse.path("verifiedCredentialsData").get(0).path("claims").path("lastName").asText() );
                 data.set("presentationResponse", presentationResponse );
                 if ( presentationResponse.has("receipt") ) {
-                    String vp_token = base64Decode( presentationResponse.path("receipt").path("vp_token").asText().split("\\.")[1] );
-                    JsonNode vpToken = objectMapper.readTree( vp_token );  
+                    String vpTkn = base64Decode( presentationResponse.path("receipt").path("vpTkn").asText().split("\\.")[1] );
+                    JsonNode vpToken = objectMapper.readTree( vpTkn );
                     String vc = base64Decode( vpToken.path("vp").path("verifiableCredential").get(0).asText().split("\\.")[1] );
                     JsonNode vcToken = objectMapper.readTree( vc );  
                     data.put( "jti", vcToken.path("jti").asText() );
